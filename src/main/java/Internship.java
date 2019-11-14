@@ -8,8 +8,8 @@ public class Internship implements KnowledgeSource, Activity {
     private final double practicePointsForOneDay = 40;
     private List<DayOfWeek> notAllowedDaysOfWeek = Arrays.asList(DayOfWeek.SUNDAY, DayOfWeek.SATURDAY);
 
-    LocalDate from;
-    LocalDate to;
+    private LocalDate from;
+    private LocalDate to;
 
     Internship(LocalDate from, LocalDate to) {
         this.from = from;
@@ -25,14 +25,14 @@ public class Internship implements KnowledgeSource, Activity {
         }
     }
 
-    private boolean isStudentCredited(Student student){
-        return student.getEducationCoefficient()>0.5;
+    private boolean isStudentCredited(Student student) {
+        return student.getEducationCoefficient() > 0.5;
     }
 
     @Override
     public void educate(Student student) {
-        if(isStudentCredited(student))
-        student.addPoints(knowledgePointsForOneDay * student.getEducationCoefficient(),
-                practicePointsForOneDay * student.getEducationCoefficient());
+        if (isStudentCredited(student))
+            student.addPoints(knowledgePointsForOneDay * student.getEducationCoefficient(),
+                    practicePointsForOneDay * student.getEducationCoefficient());
     }
 }

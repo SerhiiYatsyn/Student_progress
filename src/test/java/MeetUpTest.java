@@ -7,15 +7,14 @@ import java.util.List;
 public class MeetUpTest {
 
     @Test
-    public void checkCoefficient() { // must be greater than 0.5 to execute
+    public void checkCoefficient() {
         Student student1 = new Student(0.6);
-        Student student2 = new Student(0.9);
         MeetUp meetUp = new MeetUp();
         List<Activity> activities = List.of(meetUp);
         Plan plan = new Plan(activities, LocalDate.of(2019, 11, 1), LocalDate.of(2019, 11, 30));
         plan.perform(student1);
-        Assertions.assertEquals(student1.getKnowledgePoints(), 60);
-        Assertions.assertEquals(student1.getPracticePoints(), 120);
+        Assertions.assertEquals(student1.getKnowledgePoints(), 36);
+        Assertions.assertEquals(student1.getPracticePoints(), 12);
     }
 
     @Test

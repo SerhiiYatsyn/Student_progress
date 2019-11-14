@@ -18,26 +18,22 @@ public class Plan {
         this.from = from;
         this.to = to;
     }
-    public List<Activity> getActivities(){
+
+    public List<Activity> getActivities() {
         return new ArrayList<>(activities);
     }
 
-    public void addActivity(Activity activity){
+    public void addActivity(Activity activity) {
         this.activities.add(activity);
     }
-//    Plan(Student student, List<Activity> activities) {
-//        this.student = student;
-//        this.activities = activities;
-//    }
 
     public void perform(Student student) {
         LocalDate currentDate = this.from;
-        while(!currentDate.equals(to)){
-            for (Activity activity: activities) {
+        while (!currentDate.equals(to.plusDays(1))) {
+            for (Activity activity : activities) {
                 activity.tryToApply(student, currentDate);
             }
             currentDate = currentDate.plusDays(1);
         }
-
     }
 }

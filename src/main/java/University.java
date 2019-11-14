@@ -9,30 +9,25 @@ import java.util.List;
 public class University implements KnowledgeSource, Activity {
     private final double knowledgePointsForOneDay = 10;
     private final double practicePointsForOneDay = 1;
-    LocalDate from;
-    LocalDate to;
-    Activity activity;
-    private List<DayOfWeek> notAllowedDaysOfWeek = Arrays.asList(DayOfWeek.SUNDAY,DayOfWeek.SATURDAY);
+    private LocalDate from;
+    private LocalDate to;
+    private List<DayOfWeek> notAllowedDaysOfWeek = Arrays.asList(DayOfWeek.SUNDAY, DayOfWeek.SATURDAY);
     private List<Month> notAllowedMonths = Arrays.asList(Month.JUNE, Month.JULY, Month.AUGUST);
-//    University() {
-//        this.from = LocalDate.of(2017, 9, 1);
-//        this.to = LocalDate.of(2019, 5, 30);
-//    }
 
     University(LocalDate from, LocalDate to) {
         this.from = from;
         this.to = to;
     }
 
-    private boolean isStudentCredited(Student student){
-        return student.getEducationCoefficient()>0.3;
+    private boolean isStudentCredited(Student student) {
+        return student.getEducationCoefficient() > 0.3;
     }
 
     @Override
     public void educate(Student student) {
-        if(isStudentCredited(student))
-        student.addPoints(knowledgePointsForOneDay * student.getEducationCoefficient(),
-                practicePointsForOneDay * student.getEducationCoefficient());
+        if (isStudentCredited(student))
+            student.addPoints(knowledgePointsForOneDay * student.getEducationCoefficient(),
+                    practicePointsForOneDay * student.getEducationCoefficient());
     }
 
     @Override
